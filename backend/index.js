@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
     cors({
-      origin: "https://demo-react-node-app-dummy.herokuapp.com/",
+      origin: "http://localhost:3000",
     })
   );
 
@@ -16,11 +16,6 @@ const PORT = process.env.PORT || 3001;
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
-  });
-
-  // All other GET requests not handled before will return our React app
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
 
 app.listen(PORT, () => {
